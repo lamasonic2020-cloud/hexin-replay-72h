@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>方寊 72 小時重播文案</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: day-by-day schedule; each day lists LINE posts as message cards and IG 限動 as 9:16 frame tiles, every block one-tap copyable */
+:root{
+  --bg:#F6F2EC; --surface:#FFFFFF; --ink:#211C17; --muted:#6B6157; --line:#E2D9CC;
+  --accent:#7A4A1E; --accent-soft:#F0E4D4; --line-green:#06A04A; --ig:#B4386B; --frame:#2A231D; --frame-ink:#F4EDE3;
+  --serif:'Noto Serif TC', 'Songti TC', serif; --sans:'Noto Sans TC', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130F; --surface:#221C17; --ink:#EDE5DA; --muted:#A99D90; --line:#3A3129;
+  --accent:#D9AE7C; --accent-soft:#33281E; --line-green:#3CCB78; --ig:#E07AA3; --frame:#0F0C0A; --frame-ink:#F4EDE3; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17130F; --surface:#221C17; --ink:#EDE5DA; --muted:#A99D90; --line:#3A3129;
+  --accent:#D9AE7C; --accent-soft:#33281E; --line-green:#3CCB78; --ig:#E07AA3; --frame:#0F0C0A; --frame-ink:#F4EDE3; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:960px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--accent);font-weight:700}
+h1{font-family:var(--serif);font-size:clamp(28px,5vw,40px);line-height:1.3;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--muted);max-width:62ch}
+.deadline{display:inline-flex;align-self:flex-start;gap:8px;align-items:center;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-4px;padding:10px 4px;display:flex;gap:8px;overflow-x:auto}
+nav a{flex:none;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:500}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+section.day{display:flex;flex-direction:column;gap:20px;scroll-margin-top:72px}
+.dayhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;border-top:2px solid var(--ink);padding-top:14px}
+.dayhead h2{font-family:var(--serif);font-size:26px;margin:0}
+.dayhead p{margin:0;color:var(--muted)}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.itemhead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.chip{font-size:12px;font-weight:700;letter-spacing:.06em;border-radius:4px;padding:2px 8px;color:#fff}
+.chip.line{background:var(--line-green)}
+.chip.ig{background:var(--ig)}
+.time{font-variant-numeric:tabular-nums;font-weight:700}
+.itemhead h3{margin:0;font-size:17px;font-weight:700}
+.kw{margin-left:auto;font-size:13px;color:var(--muted)}
+.kw b{color:var(--ink)}
+.copybox{position:relative}
+pre.copy{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--sans);font-size:15.5px;line-height:1.85;background:var(--bg);border-radius:8px;padding:16px 16px 16px;min-width:0}
+.btn{font:inherit;font-size:13px;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:4px 12px;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn.done{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.copybox .btn{position:absolute;top:10px;right:10px}
+.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.frame{display:flex;flex-direction:column;gap:8px;min-width:0}
+.frame .label{font-size:13px;font-weight:700;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.phone{aspect-ratio:9/16;max-width:100%;background:var(--frame);color:var(--frame-ink);border-radius:14px;padding:22px 16px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.phone p{margin:0;white-space:pre-wrap;font-size:15px;line-height:1.75;font-weight:500}
+.sticker{align-self:flex-start;font-size:12px;border:1px dashed rgba(244,237,227,.55);border-radius:6px;padding:3px 8px;color:rgba(244,237,227,.85)}
+.visual{font-size:13px;color:var(--muted);margin:0}
+.checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.checklist li{display:flex;gap:10px;align-items:flex-start}
+.checklist input{margin-top:6px;accent-color:var(--accent);flex:none}
+.checklist label{cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">卡賽核心養護｜核心養護完整班</span>
+    <h1>11/1 銷講後　72 小時重播</h1>
+    <p class="lede">LINE 群七則、IG 限動三組加收尾。每一則都能直接按「複製」貼出去，〔　〕裡的連結發之前記得填。</p>
+    <span class="deadline">重播與報名截止　11/4（三）23:59</span>
+  </header>
+
+  <nav aria-label="日期">
+    <a href="#d1">11/2 一</a><a href="#d2">11/3 二</a><a href="#d3">11/4 三</a><a href="#d4">11/5 四</a><a href="#check">發布前確認</a>
+  </nav>
+
+  <div id="days"></div>
+
+  <section class="day" id="check">
+    <div class="dayhead"><h2>發布前確認</h2><p>勾選只存在你這台裝置</p></div>
+    <div class="item"><ul class="checklist" id="checklist"></ul></div>
+  </section>
+</div>
+
+<script>
+const ASSIST='https://lin.ee/tngnHaN';
+const days=[
+{id:'d1',date:'11/2（一）',goal:'讓沒看完的人回去看',items:[
+ {type:'line',time:'10:00',title:'① 重播上線　同步設成群公告',text:
+`昨天晚上謝謝大家來直播　重播已經放上來了
+〔重播連結〕
+
+重播放到 11/4（三）晚上 23:59　時間到就會下架　沒空一次看完的話　可以先跳這幾段
+05:22　客人為什麼會回來　做一次就沒再約常常卡在這
+22:46　客人很緊張的時候　怎麼讓他安心
+42:39　客人問「會碰到哪裡」　我怎麼回
+51:13　示範一　下腹定位跟橫撥
+1:00:02　示範二　肋骨下方跟呼吸
+1:21:31　初階跟進階怎麼選
+
+看的時候有任何問題　直接在群裡問　這三天我都會回
+
+提醒一下　報名只透過助理的官方 LINE　我跟助理都不會主動私訊你要你匯款`},
+ {type:'line',time:'20:30',title:'② 一個重點　不推課',text:
+`直播裡我提到一位客人　想再拿出來講一次
+
+他一躺上床　手就抓著毛巾不放　我請他放輕鬆　他點頭說好　手還是抓著　我換了力道　換了順序　他的肩膀還是聳著
+
+後來我才發現　他還沒準備好讓我做　他不知道我等一下會做到哪裡　哪裡不會碰　不舒服的時候可以怎麼說
+
+下一次我在動手前先講清楚　今天做到哪裡　大概多久　哪裡不做　毛巾怎麼蓋　不舒服隨時喊停　手放上去之後　他的肩膀慢慢放下來　手法才做得進去
+
+想問問大家　你們平常做到腹部之前　會先跟客人說什麼　留言跟我分享　我一則一則看
+
+這段在重播 22:46　還沒看到的可以直接跳過去
+〔重播連結〕`},
+ {type:'ig',title:'限動第 1 組　重播上線',kw:'重播',visual:'畫面：直播截圖或老師講解的畫面',frames:[
+  {label:'故事',text:`昨晚直播　我講到一個很多按摩師都遇過的狀況
+客人做完說很舒服
+然後就沒再約了
+你有想過他卡在哪嗎`},
+  {label:'解法',text:`他躺上去之後　說不出你跟上一間差在哪
+下次就會拿價錢來比
+直播裡我拆成三個地方講
+還示範了動手前我會先跟客人說什麼`},
+  {label:'CTA',text:`重播放到 11/4（三）晚上 23:59
+想看的　私訊我「重播」
+我把連結傳給你`,sticker:'倒數貼紙　11/4 23:59'}
+ ]}
+]},
+{id:'d2',date:'11/3（二）',goal:'解顧慮　幫大家選班',items:[
+ {type:'line',time:'12:00',title:'③ 三個常見問題',text:
+`上完直播　你可能還卡在這三題　我一次回在這裡
+
+完全沒學過按摩　跟得上嗎
+初階班從怎麼站　手怎麼放　力量怎麼出開始教　我先示範　再帶你一段一段練　重播 1:44:54 有現場回答這題
+
+一定要先上初階　才能上進階嗎
+不用　會一般按摩就能直接上進階　也不需要先學過下腹
+
+到底會碰到哪些地方
+只做陰囊　精索區跟外部會陰的外部照護　不碰陰莖　不做任何侵入性的操作　也不教以性刺激為目的的手法　每一次動手前都會先說明　取得客人同意　這段怎麼開口　重播 42:39 到 46:02 有完整示範
+
+還有別的問題　直接在群裡問　或傳給助理
+${ASSIST}`},
+ {type:'line',time:'20:30',title:'④ 選班＋開課日期',text:
+`不知道自己該上哪一班的　我把選法整理在這裡　重播 1:21:31 也有講
+
+完全沒學過按摩　不知道手怎麼放　力量怎麼用　選初階班
+會一般按摩　還沒學過男士下腹　選進階班
+已經在做按摩　想學下腹　也想把出力調得更省力　選進階班
+
+兩個班都是三天現場課　我會在旁邊看你的手　當場幫你修
+進階班　台中 11/23–25　台北 12/13–15
+初階班　台中 11/28–30　台北 12/6–8
+
+學費跟零利率分期　都寫在報名頁
+〔報名頁連結〕
+
+還是拿不定主意的　加助理 LINE 傳「選班」　附上你有沒有學過按摩　想上台中還是台北　我們幫你對
+${ASSIST}`},
+ {type:'ig',title:'限動第 2 組　解顧慮＋選班',kw:'選班',visual:'畫面：上課現場照，或手放在毛巾上的近照（不露膚）',frames:[
+  {label:'故事',text:`有位客人一躺上床
+手就抓著毛巾不放
+我換了力道　換了順序
+他的肩膀還是聳著`},
+  {label:'解法',text:`後來我在動手前先講清楚
+今天做到哪裡　大概多久　哪裡不做
+不舒服隨時喊停
+他的手慢慢鬆開
+手法才做得進去`},
+  {label:'投票',text:`你現在是哪一種`,sticker:'投票貼紙　還沒學過按摩／已經在做按摩'},
+  {label:'CTA',text:`完整班分初階跟進階
+會一般按摩　可以直接上進階
+不知道選哪班
+私訊我「選班」
+告訴我你學過什麼　想上台中還是台北`}
+ ]}
+]},
+{id:'d3',date:'11/4（三）',goal:'最後一天收單',items:[
+ {type:'line',time:'10:00',title:'⑤ 今晚截止',text:
+`重播今天晚上 23:59 下架　報名也在同一個時間截止
+
+為什麼不一直開著　因為完整班是三天現場課　我要一個一個看大家的手　每班只收〔名額〕位　台中進階班 11/23 就開課　我需要時間幫報名的同學安排
+
+還沒看完重播的　今天還來得及　時間不多的話　先看 22:46 客人緊張怎麼讓他安心　再看 51:13 開始的兩段示範
+〔重播連結〕
+
+已經想好要上的　直接從報名頁選班
+〔報名頁連結〕
+
+再提醒一次　報名只透過助理的官方 LINE　有人私訊說可以幫你算便宜　或要你匯到其他帳戶　都不是我們`},
+ {type:'ig',title:'限動第 3 組　最後一天',kw:'開課',visual:'畫面：直播截圖或上課現場照',frames:[
+  {label:'早上發',text:`重播今晚 23:59 下架
+報名也一起截止`,sticker:'倒數貼紙　11/4 23:59'},
+  {label:'原因',text:`完整班是三天現場課
+我會一個一個看大家的手　當場修
+台中進階班 11/23 就開課
+所以這次報名只開到今晚`},
+  {label:'CTA',text:`還沒看完　或還在想選哪班
+私訊我「開課」
+我把重播跟開課日期一起傳給你`}
+ ]},
+ {type:'line',time:'21:30',title:'⑥ 剩兩小時',text:
+`離重播下架剩兩個多小時　今晚 23:59 重播跟報名一起關
+
+還在猶豫班別的　現在傳「選班」給助理　今晚都還有人回你
+${ASSIST}`},
+ {type:'ig',title:'限動 22:00 補發',visual:'沿用同一個倒數貼紙',frames:[
+  {label:'補發',text:`剩不到兩小時
+今晚 23:59 重播下架`,sticker:'倒數貼紙　11/4 23:59'}
+ ]}
+]},
+{id:'d4',date:'11/5（四）',goal:'收尾　留住群的信任',items:[
+ {type:'line',time:'10:00',title:'⑦ 重播下架',text:
+`重播昨晚已經下架　報名也截止了　謝謝這三天看完重播　在群裡留言　私訊問問題的每一位
+
+已經報名的同學　助理這兩天會一個一個聯絡你　確認上課地點跟要準備的東西
+
+這次沒報到的也沒關係　群裡我還是會繼續分享在店裡遇到的狀況　有問題一樣可以在這裡問`},
+ {type:'ig',title:'限動收尾',frames:[
+  {label:'收尾',text:`重播已經下架了
+謝謝這三天每一個私訊我的人
+報名的同學　助理會一個一個聯絡你`}
+ ]}
+]}
+];
+const checks=[
+ '填好〔重播連結〕〔報名頁連結〕',
+ '⑤ 的〔名額〕填實際人數，沒有上限就把「每班只收〔名額〕位」整句刪掉',
+ '時間碼已照重播填好，重播檔如果有再剪過要重新對一次',
+ '③ 的三題如果直播後大家真正問的不一樣，換成真的問題',
+ '① 發出後設成群公告置頂，11/4 早上改成「今晚 23:59 下架」，11/5 撤掉',
+ '群裡一天最多兩則，每天第一則以內容為主，不連發推課訊息',
+ '群跟限動都不寫價格，學費和分期只放報名頁、助理私訊回',
+ '助理收到「重播」「選班」「開課」時，先問有沒有學過按摩、想上台中還是台北，再給報名頁；三個關鍵字分開記',
+ '第 2 組投票有投的人，助理隔天私訊問要不要幫忙選班',
+ '11/4 助理要顧到 23:59',
+ '限動畫面不露膚，IG 上不寫「私密」「下腹」'
+];
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+let n=0;
+function copyBtn(id){return `<button class="btn" type="button" data-copy="${id}" id="b-${id}">複製</button>`}
+const root=document.getElementById('days');
+root.innerHTML=days.map(d=>`
+<section class="day" id="${d.id}">
+  <div class="dayhead"><h2>${d.date}</h2><p>${d.goal}</p></div>
+  ${d.items.map(it=>{
+    if(it.type==='line'){const id='t'+(n++);return `
+    <article class="item">
+      <div class="itemhead"><span class="chip line">LINE 群</span><span class="time">${it.time}</span><h3>${it.title}</h3></div>
+      <div class="copybox"><pre class="copy" id="${id}">${esc(it.text)}</pre>${copyBtn(id)}</div>
+    </article>`}
+    return `
+    <article class="item">
+      <div class="itemhead"><span class="chip ig">IG 限動</span><h3>${it.title}</h3>${it.kw?`<span class="kw">私訊關鍵字 <b>「${it.kw}」</b></span>`:''}</div>
+      ${it.visual?`<p class="visual">${it.visual}</p>`:''}
+      <div class="frames">${it.frames.map((f,i)=>{const id='t'+(n++);return `
+        <div class="frame">
+          <div class="label"><span>${i+1}｜${f.label}</span>${copyBtn(id)}</div>
+          <div class="phone"><p id="${id}">${esc(f.text)}</p>${f.sticker?`<span class="sticker">${f.sticker}</span>`:''}</div>
+        </div>`}).join('')}</div>
+    </article>`}).join('')}
+</section>`).join('');
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-copy]');if(!b)return;
+  const el=document.getElementById(b.dataset.copy);const text=el.textContent;
+  const ok=()=>{b.textContent='已複製';b.classList.add('done');setTimeout(()=>{b.textContent='複製';b.classList.remove('done')},1600)};
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='已選取，請按複製';};
+  try{navigator.clipboard.writeText(text).then(ok,fallback)}catch(err){fallback()}
+});
+
+let saved={};try{saved=JSON.parse(localStorage.getItem('replay72-checks')||'{}')}catch(e){}
+document.getElementById('checklist').innerHTML=checks.map((c,i)=>`<li><input type="checkbox" id="c${i}" ${saved[i]?'checked':''}><label for="c${i}">${esc(c)}</label></li>`).join('');
+document.getElementById('checklist').addEventListener('change',e=>{const i=e.target.id.slice(1);saved[i]=e.target.checked;try{localStorage.setItem('replay72-checks',JSON.stringify(saved))}catch(err){}});
+</script>
+
+</body>
+</html>
