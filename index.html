@@ -42,6 +42,10 @@ section.day{display:flex;flex-direction:column;gap:20px;scroll-margin-top:72px}
 .chip{font-size:12px;font-weight:700;letter-spacing:.06em;border-radius:4px;padding:2px 8px;color:#fff}
 .chip.line{background:var(--line-green)}
 .chip.ig{background:var(--ig)}
+.chip.reel{background:var(--accent);color:var(--surface)}
+a.btn{text-decoration:none;display:inline-block}
+.itemhead .btn{margin-left:auto}
+.dayhead a{color:var(--accent);font-weight:700}
 .time{font-variant-numeric:tabular-nums;font-weight:700}
 .itemhead h3{margin:0;font-size:17px;font-weight:700}
 .kw{margin-left:auto;font-size:13px;color:var(--muted)}
@@ -75,15 +79,20 @@ html{scroll-behavior:smooth}
   <header>
     <span class="eyebrow">卡賽核心養護｜核心養護完整班</span>
     <h1>11/1 銷講後　72 小時重播</h1>
-    <p class="lede">LINE 群七則、IG 限動三組加收尾。每一則都能直接按「複製」貼出去，重播跟報名頁連結都已經填好。</p>
+    <p class="lede">LINE 群七則、IG 限動三組加收尾，最後附上 11 支短影片跟文案。每一則都能直接按「複製」貼出去，重播跟報名頁連結都已經填好。</p>
     <span class="deadline">重播與報名截止　11/4（三）23:59</span>
   </header>
 
   <nav aria-label="日期">
-    <a href="#d1">11/2 一</a><a href="#d2">11/3 二</a><a href="#d3">11/4 三</a><a href="#d4">11/5 四</a><a href="#check">發布前確認</a>
+    <a href="#d1">11/2 一</a><a href="#d2">11/3 二</a><a href="#d3">11/4 三</a><a href="#d4">11/5 四</a><a href="#shorts">短影片文案</a><a href="#check">發布前確認</a>
   </nav>
 
   <div id="days"></div>
+
+  <section class="day" id="shorts">
+    <div class="dayhead"><h2>短影片＋文案</h2><p>直播切片 11 支，按「看影片」可以下載，文案按「複製」。<a href="https://drive.google.com/drive/folders/1W7vFar7brTjI95PcrpOuxHKyGF-dIWqw" target="_blank" rel="noopener">打開全部影片資料夾</a></p></div>
+    <div id="shortlist" style="display:flex;flex-direction:column;gap:20px"></div>
+  </section>
 
   <section class="day" id="check">
     <div class="dayhead"><h2>發布前確認</h2><p>勾選只存在你這台裝置</p></div>
@@ -271,6 +280,13 @@ root.innerHTML=days.map(d=>`
         </div>`}).join('')}</div>
     </article>`}).join('')}
 </section>`).join('');
+
+const SHORTS=[{"no": "01", "title": "客人只比價格", "demo": false, "file": "13XmCJBoByJZOg3P3BUrnoSL1aa1_9WZV", "text": "當客人說不出你的服務有什麼不同，最後能比較的，很可能就只剩下價格。\n我們花時間學手法、練技術，但客人未必知道你多做了什麼，也未必記得自己最喜歡哪個部分。\n下次服務完，可以試著問客人：\n「今天哪個部分，是你最喜歡的？」\n當客人能說出具體感受，你們下一次的服務也會更有方向。\n想了解怎麼讓客人感受到你的服務差異？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "02", "title": "客人說還不錯", "demo": false, "file": "1oqnSYLscj0z2joyiDcxO6ibYRto38MfZ", "text": "「老師，你按得還不錯耶！」\n聽到這句話，你是不是也會開心一下？\n但後來我發現：客人說「還不錯」，不一定代表他真的記住了你。\n他記得的是哪個部位？哪個手法？還是做完之後的什麼感覺？\n如果連他自己都說不出來，下次想到按摩時，也不一定會想到你。\n想知道怎麼引導客人說出更具體的感受？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "03", "title": "客人太緊張", "demo": false, "file": "1NOK6lnzjMVqmfRA97U_ezWkQrauinNAs", "text": "客人躺上床後，身體很僵硬，手還一直緊抓著毛巾。\n你跟他說：「放鬆一點。」\n但他還是放鬆不下來。\n有時候，客人緊張，是因為他不知道接下來會發生什麼事。\n我會先把操作範圍、方式、毛巾怎麼蓋，以及什麼時候要換位置，跟他說清楚。\n讓客人知道接下來會發生什麼，也給他機會說出自己的顧慮。\n想看更多接待與溝通的實際分享？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "04", "title": "力道怎麼問", "demo": false, "file": "1UKbPsn5ns1hcPNTpu_jknSXcMh2UlYu5", "text": "你問客人：「這樣力道可以嗎？」\n客人說：「可以。」\n結果回家後卻傳訊息說：「剛剛有一點太大力了。」\n有時候客人回答「可以」，只是覺得還能接受，不代表那就是他最舒服的力道。\n我會試著把問題問得更具體：\n「你想要再重一點點，還是輕一點點？」\n給客人一個方向，他可能更容易說出自己的感受。\n想學更多詢問客人回饋的方法？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "05", "title": "服務常超時", "demo": false, "file": "1VnwHg8tqqGShTuSXUNQEPV-M8VSz_7Kh", "text": "每次幫客人服務，都很怕自己不小心超時？\n時間感可以在練習的時候慢慢培養。\n我會請學生回家練習時，記下每個部位花了多久，左邊、右邊都分開記。\n慢慢地，你會更清楚自己在哪些地方容易花太多時間，也比較知道接下來要怎麼調整。\n想看更多手法練習和服務安排的分享？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "06", "title": "說明服務範圍", "demo": false, "file": "1Gr7bz5W7dIU8gLzUQQ2ZLtGpiTrfgKZC", "text": "客人問你：「這個服務會做到哪裡？」\n如果自己講得不清楚，雙方就容易有誤會。\n開始服務之前，我會先說明：\n服務時間是多久、包含哪些範圍、哪些地方不會碰，以及過程中如果有任何不舒服，可以隨時告訴我。\n把話說清楚，客人才能知道自己選擇的是什麼，也更容易提出自己的顧慮。\n想聽我實際怎麼跟客人說明？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "07", "title": "上完課不敢接客", "demo": false, "file": "18fg7vpjlBP6StFHVO_cKPBz_Cge3Iisp", "text": "上完課，還是不敢幫客人做？\n先不要急著覺得自己「全部都不會」。\n你可以先問自己：我到底是卡在哪一段？\n是找不到位置？不確定力道？還是不知道怎麼跟客人說明？\n把擔心的地方拆開，才知道下一次練習要看什麼、調整什麼。\n對我來說，下課是練習的起點。\n想知道怎麼觀察自己的動作、找到練習方向？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "08", "title": "下腹手法三步驟", "demo": true, "file": "1FY8auBvGtanRfChpaeIlhOYbCsIathQa", "text": "下腹操作時，手法和接觸的位置，都需要仔細確認。\n這支影片裡，我用手示範了三個步驟：\n定位、下壓、左右橫推。\n也會讓你看到，為什麼不是想摸到東西，就直接用手指去撥。\n想連同完整動作與前後說明一起看？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "09", "title": "指腹接觸面", "demo": true, "file": "1xggewzis8HkgQQzdI_2FXXPi4smvEvE_", "text": "「一樣都是用指腹，為什麼感覺會差這麼多？」\n差別可能就藏在接觸面積。\n這支影片裡，我示範了指腹平貼，以及用指腹前端接觸時，手的擺放有什麼不同。\n操作時也要留意對方的感受；如果對方覺得尖銳、疼痛或不舒服，就先停下來確認。\n想看完整示範和講解？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "10", "title": "肋骨下方操作示範", "demo": true, "file": "1YWxkDmWiVk1w3SZsxednQ88N72d_JG2Z", "text": "看老師做動作時，覺得好像很簡單。\n輪到自己時，卻不知道手要放哪裡、怎麼移動？\n這支影片帶你看肋骨下方操作的示範：從手勢定位、確認位置，到配合呼吸和移動的過程。\n想連同前後的觀察與說明一起看？\n👇 留言「講座」，我把完整影片連結傳給你。"}, {"no": "11", "title": "確認手部位置", "demo": true, "file": "1ZVBpp_6m-VQWofSFc2AOE76sKJhBZsPX", "text": "如果手卡不進去，先不要急著加重力道。\n先停下來看一件事：\n你現在壓到的是哪裡？\n這支影片裡，我重新指出肋骨下緣的位置，示範壓在骨頭上和手放在下緣時，位置有什麼不同。\n看不清楚或做起來不舒服時，先停下來確認，不要勉強。\n想看前面的完整示範與講解？\n👇 留言「講座」，我把完整影片連結傳給你。"}];
+document.getElementById('shortlist').innerHTML=SHORTS.map(s=>{const id='t'+(n++);return `
+<article class="item">
+  <div class="itemhead"><span class="chip reel">${s.demo?'示範短片':'短片'} ${s.no}</span><h3>${s.title}</h3><a class="btn" href="https://drive.google.com/file/d/${s.file}/view" target="_blank" rel="noopener">看影片</a></div>
+  <div class="copybox"><pre class="copy" id="${id}">${esc(s.text)}</pre>${copyBtn(id)}</div>
+</article>`}).join('');
 
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-copy]');if(!b)return;
