@@ -64,6 +64,9 @@ pre.copy{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--s
 .phone p{margin:0;white-space:pre-wrap;font-size:15px;line-height:1.75;font-weight:500}
 .sticker{align-self:flex-start;font-size:12px;border:1px dashed rgba(244,237,227,.55);border-radius:6px;padding:3px 8px;color:rgba(244,237,227,.85)}
 .visual{font-size:13px;color:var(--muted);margin:0}
+.shot{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;background:var(--frame)}
+.addon{font-size:13px;color:var(--muted)}
+a.btn.dl{align-self:flex-start;background:var(--accent);border-color:var(--accent);color:var(--surface);padding:8px 16px;font-size:14px}
 .checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .checklist li{display:flex;gap:10px;align-items:flex-start}
 .checklist input{margin-top:6px;accent-color:var(--accent);flex:none}
@@ -79,18 +82,24 @@ html{scroll-behavior:smooth}
   <header>
     <span class="eyebrow">卡賽核心養護｜核心養護完整班</span>
     <h1>11/1 銷講後　72 小時重播</h1>
-    <p class="lede">LINE 群七則、IG 限動三組加收尾，最後附上 11 支短影片跟文案。每一則都能直接按「複製」貼出去，重播跟報名頁連結都已經填好。</p>
+    <p class="lede">LINE 群七則、IG 限動三組加收尾，最後附上 11 支短影片跟文案。LINE 文案按「複製」貼出去；限動圖已經做好，按「下載」存到手機就能直接發。重播跟報名頁連結都已經填好。</p>
     <span class="deadline">重播與報名截止　11/4（三）23:59</span>
+    <a class="btn dl" href="stories/stories-all.zip" download="方寊限動圖_12張.zip">下載全部限動圖（12 張）</a>
   </header>
 
   <nav aria-label="日期">
-    <a href="#d1">11/2 一</a><a href="#d2">11/3 二</a><a href="#d3">11/4 三</a><a href="#d4">11/5 四</a><a href="#shorts">短影片文案</a><a href="#check">發布前確認</a>
+    <a href="#d1">11/2 一</a><a href="#d2">11/3 二</a><a href="#d3">11/4 三</a><a href="#d4">11/5 四</a><a href="#shorts">短影片文案</a><a href="#dm">留言私訊</a><a href="#check">發布前確認</a>
   </nav>
 
   <div id="days"></div>
 
   <section class="day" id="shorts">
     <div class="dayhead"><h2>短影片＋文案</h2><p>直播切片 11 支，按「看影片」可以下載，文案按「複製」。<a href="https://drive.google.com/drive/folders/1W7vFar7brTjI95PcrpOuxHKyGF-dIWqw" target="_blank" rel="noopener">打開全部影片資料夾</a></p></div>
+    <div class="item" id="dm" style="scroll-margin-top:72px">
+      <div class="itemhead"><span class="chip reel">自動私訊</span><h3>留言「講座」後傳這段</h3></div>
+      <p class="visual">同時給重播連結跟報名資訊。11/5 之後重播下架，換成下面那段。</p>
+      <div id="dmlist" style="display:flex;flex-direction:column;gap:14px"></div>
+    </div>
     <div id="shortlist" style="display:flex;flex-direction:column;gap:20px"></div>
   </section>
 
@@ -254,11 +263,18 @@ const checks=[
  '助理收到「重播」「選班」「開課」時，先問有沒有學過按摩、想上台中還是台北，再給報名頁；三個關鍵字分開記',
  '第 2 組投票有投的人，助理隔天私訊問要不要幫忙選班',
  '11/4 助理要顧到 23:59',
- '限動畫面不露膚，IG 上不寫「私密」「下腹」'
+ '限動畫面不露膚，IG 上不寫「私密」「下腹」',
+ '短影片留言「講座」的自動私訊，11/5 起換成截止版，並請助理留意「下一梯」'
 ];
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 let n=0;
 function copyBtn(id){return `<button class="btn" type="button" data-copy="${id}" id="b-${id}">複製</button>`}
+// 限動成品圖，順序跟 days 裡的 IG 格子一致
+const STORY_FILES=[['g1-1','1102_限動1-1_故事'],['g1-2','1102_限動1-2_解法'],['g1-3','1102_限動1-3_CTA'],
+ ['g2-1','1103_限動2-1_故事'],['g2-2','1103_限動2-2_解法'],['g2-3','1103_限動2-3_投票'],['g2-4','1103_限動2-4_CTA'],
+ ['g3-1','1104_限動3-1_早上發'],['g3-2','1104_限動3-2_原因'],['g3-3','1104_限動3-3_CTA'],['g3-4','1104_限動3-4_2200補發'],
+ ['g4-1','1105_限動4-1_收尾']];
+let si=0;
 const root=document.getElementById('days');
 root.innerHTML=days.map(d=>`
 <section class="day" id="${d.id}">
@@ -272,11 +288,11 @@ root.innerHTML=days.map(d=>`
     return `
     <article class="item">
       <div class="itemhead"><span class="chip ig">IG 限動</span><h3>${it.title}</h3>${it.kw?`<span class="kw">私訊關鍵字 <b>「${it.kw}」</b></span>`:''}</div>
-      ${it.visual?`<p class="visual">${it.visual}</p>`:''}
-      <div class="frames">${it.frames.map((f,i)=>{const id='t'+(n++);return `
+      <div class="frames">${it.frames.map((f,i)=>{const [img,dl]=STORY_FILES[si++];return `
         <div class="frame">
-          <div class="label"><span>${i+1}｜${f.label}</span>${copyBtn(id)}</div>
-          <div class="phone"><p id="${id}">${esc(f.text)}</p>${f.sticker?`<span class="sticker">${f.sticker}</span>`:''}</div>
+          <div class="label"><span>${i+1}｜${f.label}</span><a class="btn" href="stories/${img}.jpg" download="${dl}.jpg">下載</a></div>
+          <img class="shot" src="stories/${img}.jpg" alt="${esc(f.text)}" loading="lazy">
+          ${f.sticker?`<span class="addon">發的時候加上：${f.sticker}</span>`:''}
         </div>`}).join('')}</div>
     </article>`}).join('')}
 </section>`).join('');
@@ -287,6 +303,37 @@ document.getElementById('shortlist').innerHTML=SHORTS.map(s=>{const id='t'+(n++)
   <div class="itemhead"><span class="chip reel">${s.demo?'示範短片':'短片'} ${s.no}</span><h3>${s.title}</h3><a class="btn" href="https://drive.google.com/file/d/${s.file}/view" target="_blank" rel="noopener">看影片</a></div>
   <div class="copybox"><pre class="copy" id="${id}">${esc(s.text)}</pre>${copyBtn(id)}</div>
 </article>`}).join('');
+
+const DMS=[
+ {title:'11/2–11/4　重播＋報名資訊',text:
+`謝謝你留言！
+這是 11/1 直播的完整重播👇
+https://youtu.be/FhfU5E7jvSI
+
+重播放到 11/4（三）晚上 23:59，時間到就下架
+沒空一次看完的話，可以先跳這兩段：
+22:46　客人很緊張的時候，怎麼讓他安心
+51:13　兩段手法示範
+
+想直接上課的話，完整班分初階跟進階，都是三天現場課
+進階班　台中 11/23–25　台北 12/13–15
+初階班　台中 11/28–30　台北 12/6–8
+報名也是 11/4（三）23:59 截止
+
+學費、分期跟報名方式都在這裡👇
+https://lamasonic2020-cloud.github.io/hexin-yanghu-site/
+
+不知道選哪一班，加助理 LINE 傳「選班」，附上你有沒有學過按摩、想上台中還是台北，我們幫你對👇
+${ASSIST}`},
+ {title:'11/5 之後　截止版',text:
+`謝謝你留言！
+這次的直播重播跟報名已經在 11/4（三）截止了
+想知道下一次開課的時間，加助理 LINE 傳「下一梯」，有新消息我們會第一個通知你👇
+${ASSIST}`}
+];
+document.getElementById('dmlist').innerHTML=DMS.map(m=>{const id='t'+(n++);return `
+<div><div class="addon" style="font-weight:700;margin-bottom:6px">${m.title}</div>
+<div class="copybox"><pre class="copy" id="${id}">${esc(m.text)}</pre>${copyBtn(id)}</div></div>`}).join('');
 
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-copy]');if(!b)return;
